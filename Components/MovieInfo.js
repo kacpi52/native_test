@@ -1,6 +1,9 @@
-import React, {useState, useEffect} from 'react'
-import { View, Text, StyleSheet, Image} from 'react-native'
+import React, {useState, useEffect} from 'react';
+import { View, Text, StyleSheet, Image} from 'react-native';
 import { searchByTitle } from '../lib/apiService';
+import {globalColors} from '../utils/globalConst';
+
+const {PRIMARY_COLOR, SECONDARY_COLOR} = globalColors;
 
 const MovieInfo = () => {
     const [movieData, setMovieData] = useState('green mile')
@@ -11,9 +14,9 @@ const MovieInfo = () => {
 
     return (
         <View style={styles.movieInfo}>
-            <Text>{movieData.Title}</Text>
+            <Text style={styles.textPrimary}>{movieData.Title}</Text>
             <Image style={styles.movieIcon} source={{ uri: movieData.Poster}} />
-            <Text>{movieData.Year}</Text>
+            <Text style={styles.textSecondary}>{movieData.Year} </Text>
         </View>
     )
 }
@@ -27,5 +30,16 @@ const styles = StyleSheet.create({
     movieIcon:{
         width: 200,
         height:200,
-    }
+    },
+    textPrimary:{
+        fontSize:40,
+        color: PRIMARY_COLOR,
+    },
+    textSecondary:{
+        fontSize:20,
+        color: SECONDARY_COLOR,
+        fontWeight:'500',
+        marginTop:10,
+
+    },
 })
