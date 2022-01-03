@@ -1,19 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';              //uninstall expo location 
+import { StyleSheet, View } from 'react-native';
+import React, {useState} from 'react';              //uninstall expo location 
 import MovieInfo from './Components/MovieInfo';
+import InfoPicker from './Components/InfoPicker';
 
 
 
 
 export default function App() {
-  
+  const [childProps, setChildProps] = useState();
+  const passProps = (picker) =>{
+    setChildProps(picker);
+  };
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.main}>
-        <Text>205/45/16</Text>
-        <MovieInfo />
+        <MovieInfo selectedInfo={childProps}/>
+        <InfoPicker parentProps={passProps}/>
       </View>
     </View>
   );

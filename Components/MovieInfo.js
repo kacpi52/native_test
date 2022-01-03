@@ -3,12 +3,12 @@ import { View, Text, StyleSheet, Image} from 'react-native';
 import { searchByTitle } from '../lib/apiService';
 import {globalColors} from '../utils/globalConst';
 
-const {PRIMARY_COLOR, SECONDARY_COLOR} = globalColors;
+const {PRIMARY_COLOR, SECONDARY_COLOR, DESCRIPTION_COLOR} = globalColors;
 
-const MovieInfo = () => {
+const MovieInfo = ({selectedInfo}) => {
     const [movieData, setMovieData] = useState('green mile')
     useEffect(async () => {
-        const ApiRespData = await searchByTitle('shrek')
+        const ApiRespData = await searchByTitle('spider man')
         setMovieData(ApiRespData);
     }, []);
 
@@ -17,6 +17,7 @@ const MovieInfo = () => {
             <Text style={styles.textPrimary}>{movieData.Title}</Text>
             <Image style={styles.movieIcon} source={{ uri: movieData.Poster}} />
             <Text style={styles.textSecondary}>{movieData.Year} </Text>
+            <Text style={styles.textDescription}>{selectedInfo=='actors' ? movieData.Actors : movieData.Plot}</Text>
         </View>
     )
 }
@@ -42,4 +43,9 @@ const styles = StyleSheet.create({
         marginTop:10,
 
     },
+    textDescription:{
+        fontSize:10,
+        color: DESCRIPTION_COLOR,
+        marginTop:5,
+    }
 })
