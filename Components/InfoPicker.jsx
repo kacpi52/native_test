@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import {Picker} from '@react-native-picker/picker';        // Plot Actors
 
 const InfoPicker = (props) => {
     const [selectedInfo, setSelectedInfo] = useState();
-    props.parentProps(selectedInfo);
     return (
         <View >
         <View style={styles.infoPicker}>
@@ -14,6 +13,7 @@ const InfoPicker = (props) => {
         <View>
             <Picker
             selectedValue={selectedInfo}
+            mode='dropdown'
             onValueChange={(itemValue)=>{
                 setSelectedInfo(itemValue);
             }}>
@@ -30,6 +30,16 @@ export default InfoPicker;
 const styles =StyleSheet.create({
     infoPicker: {
         alignItems: 'center',
+        position:'absolute',
+        margin:30,
+        ...Platform.select({
+            ios:{
+                top:-20,
+            },
+            android:{
+                top:20,
+            },
+        }),
     },
     textSelected: {
         fontSize: 20,

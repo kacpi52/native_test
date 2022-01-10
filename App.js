@@ -8,16 +8,13 @@ import InfoPicker from './Components/InfoPicker';
 
 
 export default function App() {
-  const [childProps, setChildProps] = useState();
-  const passProps = (picker) =>{
-    setChildProps(picker);
-  };
+  
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.main}>
-        <MovieInfo selectedInfo={childProps}/>
-        <InfoPicker parentProps={passProps}/>
+        <MovieInfo />
+        <InfoPicker />
       </View>
     </View>
   );

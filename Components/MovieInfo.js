@@ -5,7 +5,7 @@ import {globalColors} from '../utils/globalConst';
 
 const {PRIMARY_COLOR, SECONDARY_COLOR, DESCRIPTION_COLOR} = globalColors;
 
-const MovieInfo = ({selectedInfo}) => {
+const MovieInfo = () => {
     const [movieData, setMovieData] = useState('green mile')
     useEffect(async () => {
         const ApiRespData = await searchByTitle('spider man')
@@ -17,7 +17,7 @@ const MovieInfo = ({selectedInfo}) => {
             <Text style={styles.textPrimary}>{movieData.Title}</Text>
             <Image style={styles.movieIcon} source={{ uri: movieData.Poster}} />
             <Text style={styles.textSecondary}>{movieData.Year} </Text>
-            <Text style={styles.textDescription}>{selectedInfo=='actors' ? movieData.Actors : movieData.Plot}</Text>
+            <Text style={styles.textDescription}>{movieData.Plot}</Text>
         </View>
     )
 }
