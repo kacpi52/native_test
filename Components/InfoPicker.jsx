@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, Platform } from 'react-native';
+import { View, Text, StyleSheet, Platform, Button } from 'react-native';
 import {Picker} from '@react-native-picker/picker';        // Plot Actors
 
-const InfoPicker = (props) => {
+const InfoPicker = ({navigation}) => {
     const [selectedInfo, setSelectedInfo] = useState();
     return (
         <View >
@@ -21,6 +21,7 @@ const InfoPicker = (props) => {
                 <Picker.Item label='Description' value='desc' />
             </Picker>
         </View>
+        <Button title='Go back' onPress={navigation.goBack}/>
         </View >
     )
 };
@@ -29,6 +30,8 @@ export default InfoPicker;
 
 const styles =StyleSheet.create({
     infoPicker: {
+        flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
         position:'absolute',
         margin:30,

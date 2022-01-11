@@ -26,6 +26,8 @@ export default MovieInfo;
 
 const styles = StyleSheet.create({
     movieInfo:{
+        flex: 1,
+        justifyContent: 'center',
      alignItems:'center',   
     },
     movieIcon:{

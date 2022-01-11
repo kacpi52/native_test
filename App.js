@@ -1,32 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import React, {useState} from 'react';              //uninstall expo location 
+
+import { StyleSheet, View, Text } from 'react-native';
+import React from 'react';              //uninstall expo location 
+import {NavigationContainer} from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Profile from './Components/Profile';
+import Home from './Components/Home';
 import MovieInfo from './Components/MovieInfo';
-import InfoPicker from './Components/InfoPicker';
+//import InfoPicker from './Components/InfoPicker';
 
-
-
+const BottomTab = createBottomTabNavigator();
 
 export default function App() {
   
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <View style={styles.main}>
-        <MovieInfo />
-        <InfoPicker />
-      </View>
-    </View>
-  );
+    <NavigationContainer>
+      <BottomTab.Navigator>
+        <BottomTab.Screen name="Home" component={Home} />
+        <BottomTab.Screen name="Pro" component={Profile} />
+        <BottomTab.Screen name="Movies" component={MovieInfo} />
+      </BottomTab.Navigator>
+    </NavigationContainer>
+  
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  main: {
-    justifyContent:'center',
-    flex: 1,
-  },
-});
+
